@@ -15,9 +15,17 @@ $(document).ready(function() {
 			var query;
 			query = $(this).val();
 			$.get('/voxpop/firms/', {query: query}, function(data) {
-				$('#firms').html(data);
+				$('#content').html(data);
 			});
 		}
+	});
+
+	$("body").on('click', '.escName', function(event) {
+		var firm_id;
+		firm_id = $(this).attr("data-firmid");
+		$.get('/voxpop/show_reviews', {firm_id: firm_id}, function(data) {
+			$('#content').html(data);
+		});
 	});
 
 });

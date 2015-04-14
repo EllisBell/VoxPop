@@ -47,3 +47,14 @@ def firms(request):
 
 	return render(request, 'voxpop/firms.html', {'firm_list':firm_list})
 
+def show_reviews(request):
+	reviews = []
+	firm_id = None
+	if request.method == 'GET':
+		firm_id = request.GET['firm_id']
+		
+	firm = Firm.objects.get(id=firm_id)
+
+	reviews = Review.objects.filter(firm=firm)
+	return render(request, 'voxpop/reviews.html', {'reviews': reviews})
+

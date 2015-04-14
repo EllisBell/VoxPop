@@ -1,3 +1,6 @@
+body {
+	font-family: sans-serif;
+}
 #topBar {
 		background-color: #48D1CC;
 		height: 60px;
@@ -15,6 +18,15 @@
 	font-style: italic;
 }
 
+#name a {
+	color:white;
+	text-decoration: none;
+}
+
+#name a:hover .cap {
+	color:#FFCC99;
+}
+
 #topRight {
 	position: absolute;
 	right: 20px;
@@ -25,6 +37,11 @@
 #topRight a {
 	color:white;
 	text-decoration: none;
+	font-family: sans-serif;
+}
+
+#topRight a:hover {
+	color:#FFCC99;
 }
 
 #belowBar {
@@ -36,6 +53,22 @@
 #search {
 	height:50px;
 	font-size: 40px;
+}
+
+#reviews {
+	width: 70%;
+	text-align: justify;
+}
+
+.ind_review {
+	padding: 5px;
+	border: 2px solid black;
+}
+
+.reviewHeader {
+	font-weight: bold;
+	margin-bottom:0px;
+	margin-top:5px;
 }
 
 

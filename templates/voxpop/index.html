@@ -1,38 +1,17 @@
-<!DOCTYPE html>
+{% extends 'voxpop/base.html' %}
 
-{% load staticfiles %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="{% static "js/voxpop_ajax.js" %}"></script>
+{% load voxpop_extras %}
 
-<html> 
-
-<head>
-	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" </link>
-	<title>VOX POP!</title>
-</head>
-
-<body>
-	<div id="topBar">
-		<h1 id="name">[VoxPop]</h1>
-		<span id="topRight"> <a href="http://www.google.com">sobre</a> ///
-		<a href="http://www.google.com"> termos e condições </a> </span>
-	</div>
+{% block body_block %}
 	<div id="belowBar">
-		<p> Escritórios </p>
-		<p> Procurar Escritório </p>
+		<p> Breve Texto Explicativo </p>
 		<form>
 			<label></label>
-			<input class="search-query span10" type="text" name="search" value="" id="search" />
+			<input class="search-query span10" type="text" value="" placeholder="procure um escritório" id="search" />
 		</form>
 		<div id="firm_search"></div>
-		<div id="firms">
-			<ul> 
-				{% for firm in firms %}
-				<li>{{ firm.name }}</li>
-				{% endfor %}
-			</ul>
+		<div id="content">
+			{% get_firms %}
 		</div>
 	</div>
-</body>
-
-</html>
+{% endblock %}
