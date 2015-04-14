@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 
 {% load staticfiles %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{% static "js/voxpop_ajax.js" %}"></script>
 
 <html> 
 
 <head>
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" </link>
 	<title>VOX POP!</title>
 </head>
 
 <body>
-	<h1>VOX POP</h1>
-	<p>{{ test }}</p>
-	<img src="{% static "images/testing.jpg" %}" alt="picture of picture of picture" />
+	<div id="topBar">
+		<h1 id="name">[VoxPop]</h1>
+		<span id="topRight"> <a href="http://www.google.com">sobre</a> ///
+		<a href="http://www.google.com"> termos e condições </a> </span>
+	</div>
+	<div id="belowBar">
+		<p> Escritórios </p>
+		<p> Procurar Escritório </p>
+		<form>
+			<label></label>
+			<input class="search-query span10" type="text" name="search" value="" id="search" />
+		</form>
+		<div id="firm_search"></div>
+		<div id="firms">
+			<ul> 
+				{% for firm in firms %}
+				<li>{{ firm.name }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
 </body>
 
 </html>
