@@ -1,9 +1,7 @@
 {% if firm_list %}
-	<ul> 
-		{% for firm in firm_list %}
-		<li class="escName" data-firmid="{{ firm.id }}">{{ firm.name }}</li>
-		{% endfor %}
-	</ul>
+	{% for firm in firm_list %}
+	<div class="{% cycle 'firmBox' 'firmBox midBox' 'firmBox' %}" data-firmid="{{ firm.id }}">{{ firm.name }}</div>
+	{% endfor %}
 {% else %}
 	<p>Não foi encontrado qualquer escritório com esse nome</p>
 {% endif %}

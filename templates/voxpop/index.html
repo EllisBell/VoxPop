@@ -5,11 +5,12 @@
 {% block body_block %}
 	<div id="belowBar">
 		<p> Breve Texto Explicativo </p>
-		<form>
-			<label></label>
-			<input class="search-query span10" type="text" value="" placeholder="procure um escritório" id="search" />
-		</form>
-		<div id="firm_search"></div>
+		<div id="searchDiv">
+			<form>
+				<label></label>
+				<input class="search-query span10" type="text" value="" placeholder="procure um escritório" id="search" />
+			</form>
+		</div>
 		<div id="content">
 			{% get_firms %}
 		</div>

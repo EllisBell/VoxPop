@@ -8,6 +8,7 @@ body {
 		position: fixed;
 		top: 0;
 		left: 0;
+		z-index: 10000;
 }
 
 #name {
@@ -50,19 +51,41 @@ body {
 	margin-right:15%;
 }
 
+#searchDiv {
+	text-align: center;
+}
+
 #search {
 	height:50px;
 	font-size: 40px;
 }
 
+.firmBox {
+	background-color: #FFCC99;
+	color:#505050;
+	height: 200px;
+	width: 290px;
+	position: relative;
+	float:left;
+	border: 2px solid black;
+	margin-top: 10px;
+}
+
+.midBox {
+	margin-left: 28px;
+	margin-right: 28px;
+}
+
 #reviews {
 	width: 70%;
+	margin: 0 auto;
 	text-align: justify;
 }
 
 .ind_review {
 	padding: 5px;
 	border: 2px solid black;
+	margin-bottom: 10px;
 }
 
 .reviewHeader {
@@ -70,5 +93,11 @@ body {
 	margin-bottom:0px;
 	margin-top:5px;
 }
+
+#content {
+	position:relative;
+	top: 20px;
+}
+
 
 

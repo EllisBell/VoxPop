@@ -20,7 +20,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("body").on('click', '.escName', function(event) {
+	$("body").on('click', '.firmBox', function(event) {
 		var firm_id;
 		firm_id = $(this).attr("data-firmid");
 		$.get('/voxpop/show_reviews', {firm_id: firm_id}, function(data) {
