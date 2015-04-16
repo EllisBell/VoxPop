@@ -26,6 +26,7 @@ $(document).ready(function() {
 		$.get('/voxpop/show_reviews', {firm_id: firm_id}, function(data) {
 			$('#content').html(data);
 		});
+		$("body").scrollTop(0);
 	});
 
 	$("body").on('mouseover', '.firmBox', function() {

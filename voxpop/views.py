@@ -41,7 +41,7 @@ def firms(request):
 
 	
 	if(query==''):
-		firm_list = Firm.objects.all()
+		firm_list = Firm.objects.all().order_by('name')
 	else:
 		firm_list = get_firm_list(query)
 
