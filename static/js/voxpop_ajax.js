@@ -30,11 +30,11 @@ $(document).ready(function() {
 	});
 
 	$("body").on('mouseover', '.firmBox', function() {
-		$(this).css('background-color', '#FFCC99');
+		$(this).css({'background-color' : '#FFCC99', 'opacity' : '1'});
 	});
 
 	$("body").on('mouseout', '.firmBox', function() {
-		$(this).css('background-color', '#48D1CC');
+		$(this).css({'background-color':'#48D1CC', 'opacity':'0.8'});
 	});
 
 	$("body").on('mouseout', '.evenBox', function() {

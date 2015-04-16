@@ -3,7 +3,12 @@ html {
 }
 
 body {
-	font-family: 'Open Sans', sans-serif; 
+	font-family: 'Open Sans', sans-serif;
+	background: url("../images/glasses.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 
 #topBar {
@@ -60,6 +65,7 @@ body {
 #intro {
 	color:gray;
 	font-weight: bold;
+	font-size: 125%;
 }
 
 #searchDiv {
@@ -68,7 +74,18 @@ body {
 
 #search {
 	font-size: 300%;
-	background-color: #F5F7E9;
+	background-color: #F0F0F0;
+	border: none;
+}
+
+#search:focus {
+	outline:none;
+}
+
+#magGlass {
+	font-size: 220%;
+	position:absolute;
+	right:0;
 }
 
 .firmBox {
@@ -81,13 +98,17 @@ body {
 	float:left;
 	margin-top: 20px;
 	margin-right: 10px;
-	margin-left: 17px;
+	margin-left: 19px;
 	text-align: left;
+	opacity:0.8;
 }
-
 
 .evenBox {
 	background-color: gray;
+}
+
+.firmName {
+	opacity:1;
 }
 
 #reviews {
