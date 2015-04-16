@@ -1,6 +1,10 @@
 {% if firm_list %}
 	{% for firm in firm_list %}
-	<div class="{% cycle 'firmBox' 'firmBox midBox' 'firmBox' %}" data-firmid="{{ firm.id }}">{{ firm.name }}</div>
+		{% if forloop.counter|divisibleby:"2" %}
+			<div class="firmBox evenBox" data-firmid="{{ firm.id }}">{{ firm.name }}</div>
+		{% else %}
+			<div class="firmBox" data-firmid="{{ firm.id }}">{{ firm.name }}</div>
+		{% endif %}
 	{% endfor %}
 {% else %}
 	<p>Não foi encontrado qualquer escritório com esse nome</p>

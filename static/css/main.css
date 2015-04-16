@@ -1,9 +1,9 @@
 body {
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 #topBar {
 		background-color: #48D1CC;
-		height: 60px;
+		height: 80px;
 		width:100%;
 		position: fixed;
 		top: 0;
@@ -13,10 +13,11 @@ body {
 
 #name {
 	color: white;
-	position: relative;
-	left:25px;
-	font-family:sans-serif;
+	position: absolute;
+	left:2%;
+	top:2%;
 	font-style: italic;
+	font-weight: bold;
 }
 
 #name a {
@@ -30,15 +31,14 @@ body {
 
 #topRight {
 	position: absolute;
-	right: 20px;
-	top: 35px;
+	right: 2%;
+	bottom: 20%;
 	font-weight: bold;
 }
 
 #topRight a {
 	color:white;
 	text-decoration: none;
-	font-family: sans-serif;
 }
 
 #topRight a:hover {
@@ -46,9 +46,15 @@ body {
 }
 
 #belowBar {
-	margin-top: 70px;
+	margin-top: 90px;
 	margin-left: 15%;
 	margin-right:15%;
+	text-align: center;
+}
+
+#intro {
+	color:gray;
+	font-weight: bold;
 }
 
 #searchDiv {
@@ -56,24 +62,27 @@ body {
 }
 
 #search {
-	height:50px;
-	font-size: 40px;
+	font-size: 300%;
+	background-color: #F5F7E9;
 }
 
 .firmBox {
-	background-color: #FFCC99;
-	color:#505050;
+	background-color: #48D1CC;
+	color:white;
+	font-size: 200%;
 	height: 200px;
-	width: 290px;
+	width: 280px;
 	position: relative;
 	float:left;
-	border: 2px solid black;
-	margin-top: 10px;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 16px;
+	text-align: left;
 }
 
-.midBox {
-	margin-left: 28px;
-	margin-right: 28px;
+
+.evenBox {
+	background-color: gray;
 }
 
 #reviews {
@@ -83,9 +92,9 @@ body {
 }
 
 .ind_review {
-	padding: 5px;
-	border: 2px solid black;
+	padding: 15px;
 	margin-bottom: 10px;
+	border-bottom: 3px solid gray;
 }
 
 .reviewHeader {
@@ -97,7 +106,9 @@ body {
 #content {
 	position:relative;
 	top: 20px;
+	text-align: center;
 }
+
 
 
 

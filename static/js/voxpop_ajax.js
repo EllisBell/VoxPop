@@ -28,4 +28,16 @@ $(document).ready(function() {
 		});
 	});
 
+	$("body").on('mouseover', '.firmBox', function() {
+		$(this).css('background-color', '#FFCC99');
+	});
+
+	$("body").on('mouseout', '.firmBox', function() {
+		$(this).css('background-color', '#48D1CC');
+	});
+
+	$("body").on('mouseout', '.evenBox', function() {
+		$(this).css('background-color', 'gray');
+	});
+
 });

@@ -5,12 +5,12 @@ from voxpop.models import Firm, Review
 # Create your views here.
 
 def index(request):
-	context_dict = {}
-	context_dict['test'] = "yo yo yo"
-	firms = Firm.objects.all()
-	print firms
-	context_dict['firms'] = firms
-	return render(request, 'voxpop/index.html', context_dict)
+	#context_dict = {}
+	#context_dict['test'] = "yo yo yo"
+	#firms = Firm.objects.all().order_by('name')
+	#print firms
+	#context_dict['firms'] = firms
+	return render(request, 'voxpop/index.html')
 
 # used for search - returns list of firms based on query
 def get_firm_list(starts_with=''):

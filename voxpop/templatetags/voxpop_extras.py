@@ -5,4 +5,5 @@ register = template.Library()
 
 @register.inclusion_tag('voxpop/firms.html')
 def get_firms():
-	return {'firm_list': Firm.objects.all()}
+	firms = Firm.objects.all().order_by('name')
+	return {'firm_list': firms}
