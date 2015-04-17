@@ -4,7 +4,7 @@ html {
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	background: url("../images/glasses.jpg") no-repeat center center fixed;
+	background: url("../images/compGlasses.jpg") no-repeat;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
