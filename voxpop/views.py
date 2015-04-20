@@ -12,6 +12,9 @@ def index(request):
 	#context_dict['firms'] = firms
 	return render(request, 'voxpop/index.html')
 
+def newhome(request):
+	return render(request, 'voxpop/newhome.html')
+
 # used for search - returns list of firms based on query
 def get_firm_list(starts_with=''):
 	firm_list = []

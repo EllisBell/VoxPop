@@ -6,6 +6,8 @@ django.setup()
 
 from voxpop.models import Firm, Review
 
+import codecs
+
 
 def populate():
 	eg_pro = """But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was 
@@ -24,13 +26,23 @@ def populate():
 	because it is pain, but because occasionally circumstances occur in which toil and pain can procure 
 	him some great pleasure."""
 
-	vda = add_firm('Vieira de Almeida')
-	mlgts = add_firm('MLGTS')
-	plmj = add_firm('PLMJ')
+	# vda = add_firm('Vieira de Almeida')
+	# mlgts = add_firm('MLGTS')
+	# plmj = add_firm('PLMJ')
 
-	add_review(vda, eg_role, eg_salary, eg_pro, eg_con, eg_est)
-	add_review(mlgts, eg_role, eg_salary, eg_pro, eg_con, eg_est)
-	add_review(plmj, eg_role, eg_salary, eg_pro, eg_con, eg_est)
+	# add_review(vda, eg_role, eg_salary, eg_pro, eg_con, eg_est)
+	# add_review(mlgts, eg_role, eg_salary, eg_pro, eg_con, eg_est)
+	# add_review(plmj, eg_role, eg_salary, eg_pro, eg_con, eg_est)
+	
+	firms = []
+	f = codecs.open('namefile.txt', encoding="utf-8")
+	
+	for line in f:
+		firm = add_firm(line)
+		firms.append(firm)
+
+	for i in range(0,5):
+		add_review(firms[i], eg_role, eg_salary, eg_pro, eg_con, eg_est)
 
 
 def add_firm(name):

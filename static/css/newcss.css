@@ -1,0 +1,46 @@
+body {
+	padding-top: 90px;
+}
+
+.navbar {
+	min-height: 80px;
+}
+
+.navbar-brand {
+	line-height: 80px;
+	height:80px;
+	font-size: 24px;
+}
+
+.navbar-right li a {
+	height:50px;
+	margin-top: 30px;
+}
+
+.centered {
+	text-align: center;
+}
+
+.col-centered {
+	float:none;
+	margin: 0 auto;
+}
+
+#searchbox {
+	height:60px;
+	font-size: 40px;
+}
+
+#searchicon {
+	font-size: 1.4em
+}
+
+.buffer2 {
+	margin-top: 2%;
+}
+
+@media screen and (max-width: 568px) {
+	#searchbox {
+		font-size: 20px;
+	}
+}
