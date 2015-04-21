@@ -29,6 +29,18 @@ body {
 #searchbox {
 	height:60px;
 	font-size: 40px;
+	border-left: none;
+	padding-left: 0px;
+	box-shadow: none;
+	border-color:#dddddd;
+}
+
+#searchbox:focus {
+	outline: none;
+	border: 1px solid;
+	border-left: none;
+	border-color: #dddddd;
+	box-shadow: none;
 }
 
 #searchicon {
@@ -43,4 +55,10 @@ body {
 	#searchbox {
 		font-size: 20px;
 	}
+}
+
+.search-addon {
+	background-color: white;
+	border-right: none;
+	border-color: #dddddd;
 }
