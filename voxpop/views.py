@@ -13,7 +13,39 @@ def index(request):
 	return render(request, 'voxpop/index.html')
 
 def newhome(request):
-	return render(request, 'voxpop/newhome.html')
+	context_dict = {}
+	allfirms = Firm.objects.all()
+	num = len(allfirms)
+	
+	# want to have rows of 3 firms in template
+	# get number of rows here
+	if num%3 == 0:
+		rows = num/3
+	else:
+		rows = (num/3) + 1
+
+	firmindex = 0 # index for list of all firms
+	firmlists = [] # list to store sublists of firms
+
+	for i in range(0, rows): #for each row...
+		minilist = [] # sublist of firms
+		for i in range(0, 3): # get 3 firms
+			if(firmindex < num): # check firmindex still within range
+				minilist.append(allfirms[firmindex]) # add firm to sublist
+				firmindex+=1 # increment index in full list
+		firmlists.append(minilist) # add this sublist to metalist
+
+	# N.B. - consider sending just the full list and then having logic in template, like so?:
+	# if counter-1%3==0 AND counter%2==0, open row, column, firm is even
+	# else if counter%3==0 AND counter%2==0, close row, column, firm is even
+	# else if counter-1%3==0, open row, colum, firm is odd
+	# else if counter%3==0, close row, colum, firm is odd
+	# else if counter%2==0, just column, firm is even
+	# else, just column, firm is odd
+
+	context_dict['firmlists'] = firmlists
+
+	return render(request, 'voxpop/newhome.html', context_dict)
 
 # used for search - returns list of firms based on query
 def get_firm_list(starts_with=''):
