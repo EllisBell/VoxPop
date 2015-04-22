@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href='/voxpop/'>#raio-x</a>
+          <a class="navbar-brand" href='/voxpop/newhome'>#raio-x</a>
         </div>
 
         <!-- collect nav links and stuff for toggling -->
@@ -60,21 +60,23 @@
               </div>
           </div>
         </div>
-        {% for firmlist in firmlists %}
-        <div class="row buffer2">
-          {% for firm in firmlist %}
-            {% if forloop.parentloop.counter|add:forloop.counter0|divisibleby:"2" %}
-                <div class="col-sm-4">
-                  <div class="firmBox evenBox"> {{ firm.name }} </div>
+        <div id="content">
+          {% for firmlist in firmlists %}
+          <div class="row buffer2">
+            {% for firm in firmlist %}
+              {% if forloop.parentloop.counter|add:forloop.counter0|divisibleby:"2" %}
+                  <div class="col-sm-4">
+                    <div class="firmBox evenBox" data-firmid="{{ firm.id }}"> {{ firm.name }} </div>
+                  </div>
+              {% else %}
+                <div class="col-sm-4"> 
+                  <div class="firmBox" data-firmid="{{ firm.id }}"> {{ firm.name }} </div>
                 </div>
-            {% else %}
-              <div class="col-sm-4"> 
-                <div class="firmBox"> {{ firm.name }} </div>
-              </div>
-            {% endif %} 
+              {% endif %} 
+            {% endfor %}
+          </div>
           {% endfor %}
         </div>
-        {% endfor %}
       </div> <!-- centered block -->
     </div> <!-- content container -->
 
@@ -82,5 +84,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{% static "js/new_vpajax.js" %}"></script>
   </body>
 </html>

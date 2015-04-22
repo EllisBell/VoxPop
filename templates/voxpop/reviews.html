@@ -1,17 +1,44 @@
 <div id="reviews">
 	{% for review in reviews %}
-		<div class="ind_review">
-			<p class="reviewHeader"> Posição </p>
-			{{ review.role }}
-			<p class="reviewHeader"> Salário </p>
-			{{ review.salary }}
-			<p class="reviewHeader"> O Bom </p>
-			{{ review.pros }}
-			<p class="reviewHeader"> O Mau </p>
-			{{ review.cons }}
-			<p class="reviewHeader"> Estágio </p>
-			{{ review.estagio }}
-		</div>	
+		<div class="row buffer2">
+			{% if forloop.counter0 < 1 %}
+				<div class="col-sm-3">
+					<div class="sideArea"> 
+						<span id="sideName">{{ firm.name }}</span> <br> <br>
+						Contribue uma <span id="nova">nova avaliação</span> 
+					</div>
+                </div>
+                <div class="col-sm-6">
+	                	<div class="review">
+						<p> <span class="rev_header">Posição</span> <br>
+						{{ review.role }} </p>
+						<p> <span class="rev_header">Salário</span><br>
+						{{ review.salary }} </p>
+						<p> <span class="rev_header">O Bom</span> <br>
+						{{ review.pros }} </p>
+						<p> <span class="rev_header">O Mau</span> <br>
+						{{ review.cons }} </p>
+						<p> <span class="rev_header">Estágio</span> <br>
+						{{ review.estagio }} </p>
+					</div>
+				</div>
+            {% else %}
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="review">
+						<p> <span class="rev_header">Posição</span> <br>
+						{{ review.role }} </p>
+						<p> <span class="rev_header">Salário</span><br>
+						{{ review.salary }} </p>
+						<p> <span class="rev_header">O Bom</span> <br>
+						{{ review.pros }} </p>
+						<p> <span class="rev_header">O Mau</span> <br>
+						{{ review.cons }} </p>
+						<p> <span class="rev_header">Estágio</span> <br>
+						{{ review.estagio }} </p>
+						</div>
+				</div>
+			{% endif %}
+		</div>
 	{% endfor %}
 </div>
 

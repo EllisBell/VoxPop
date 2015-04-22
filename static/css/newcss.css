@@ -22,7 +22,7 @@ body {
 }
 
 .centered {
-	text-align: center;
+
 	margin-bottom: 3%;
 }
 
@@ -83,4 +83,28 @@ body {
 
 .evenBox {
 	background-color: gray;
+}
+
+.review {
+	text-align: justify;
+	font-family: 'Merriweather', serif;
+	background-color: #eff5f9;
+	padding:4px;
+}
+
+.rev_header {
+	font-weight: bold;
+	color: #E59907;
+}
+
+.sideArea {
+	font-family: 'Merriweather', serif;
+}
+
+#sideName {
+	font-weight: bold;
+}
+
+#nova {
+	text-decoration: underline;
 }
