@@ -1,0 +1,11 @@
+{% if firm_list %}
+	{% for firm in firm_list %}
+		{% if forloop.counter|divisibleby:"2" %}
+			<div class="firmBox evenBox" data-firmid="{{ firm.id }}"><div class="firmName">{{ firm.name }}</div></div>
+		{% else %}
+			<div class="firmBox" data-firmid="{{ firm.id }}"><div class="firmName">{{ firm.name }}</div></div>
+		{% endif %}
+	{% endfor %}
+{% else %}
+	<p>Não foi encontrado qualquer escritório com esse nome</p>
+{% endif %}

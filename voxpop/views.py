@@ -4,19 +4,49 @@ from voxpop.models import Firm, Review
 
 # Create your views here.
 
+
 def index(request):
-	#context_dict = {}
-	#context_dict['test'] = "yo yo yo"
-	#firms = Firm.objects.all().order_by('name')
-	#print firms
-	#context_dict['firms'] = firms
 	return render(request, 'voxpop/index.html')
 
-def newhome(request):
+
+def firms(request):
 	context_dict = {}
-	allfirms = Firm.objects.all()
-	num = len(allfirms)
+	query = ''
+	if request.method == 'GET':
+		query = request.GET['query']
 	
+	if query=='':
+		firm_list = Firm.objects.all().order_by('name')
+	else:
+		firm_list = get_firm_list(query)
+
+	firmlists = get_split_list(firm_list)
+
+	context_dict['firmlists'] = firmlists
+
+	return render(request, 'voxpop/firms.html', context_dict)
+
+# used for search - returns list of firms based on query
+def get_firm_list(query=''):
+	firm_list = []
+	if query:
+		firm_list = Firm.objects.filter(name__icontains=query)
+
+	return firm_list
+
+
+# takes list and splits it up into list of lists, each containing 3 items
+def get_split_list(firmlist):
+	
+	num = len(firmlist)
+	
+	firmindex = 0 # index for list of all firms
+	firmlists = [] # list to store sublists of firms
+
+	#check for empty list coming in; if list is empty, return empty list of lists
+	if num==0:
+		return firmlists
+
 	# want to have rows of 3 firms in template
 	# get number of rows here
 	if num%3 == 0:
@@ -24,14 +54,11 @@ def newhome(request):
 	else:
 		rows = (num/3) + 1
 
-	firmindex = 0 # index for list of all firms
-	firmlists = [] # list to store sublists of firms
-
 	for i in range(0, rows): #for each row...
 		minilist = [] # sublist of firms
 		for i in range(0, 3): # get 3 firms
 			if(firmindex < num): # check firmindex still within range
-				minilist.append(allfirms[firmindex]) # add firm to sublist
+				minilist.append(firmlist[firmindex]) # add firm to sublist
 				firmindex+=1 # increment index in full list
 		firmlists.append(minilist) # add this sublist to metalist
 
@@ -43,59 +70,29 @@ def newhome(request):
 	# else if counter%2==0, just column, firm is even
 	# else, just column, firm is odd
 
-	context_dict['firmlists'] = firmlists
+	return firmlists
 
-	return render(request, 'voxpop/newhome.html', context_dict)
 
-# used for search - returns list of firms based on query
-def get_firm_list(starts_with=''):
-	firm_list = []
-	if starts_with:
-		firm_list = Firm.objects.filter(name__istartswith=starts_with)
-
-	return firm_list
-
-# def suggest_firm(request):
-# 	firm_list = []
-# 	starts_with = ''
-# 	if request.method == 'GET':
-# 		starts_with = request.GET['suggestion']
-
-# 	firm_list = get_firm_list(8, starts_with)
-
-# 	return render(request, 'voxpop/firm_list.html', {'firm_list':firm_list})
-
-# calls get firm list above
-# returns html with the firms matching search query (or all firms if query empty)
-def firms(request):
-	print "got here"
-	firm_list = []
-	starts_with = ''
-	if request.method == 'GET':
-		query = request.GET['query']
-
-	
-	if(query==''):
-		firm_list = Firm.objects.all().order_by('name')
-	else:
-		firm_list = get_firm_list(query)
-
-	return render(request, 'voxpop/firms.html', {'firm_list':firm_list})
-
-def show_reviews(request):
+def reviews(request, firm_id):
 	context_dict = {}
-	reviews = []
-	firm_id = None
-	if request.method == 'GET':
-		firm_id = request.GET['firm_id']
-		
-	firm = Firm.objects.get(id=firm_id)
-	reviews = Review.objects.filter(firm=firm)
+	
+	try:
+		reviews = []
+			
+		firm = Firm.objects.get(id=firm_id)
+		reviews = Review.objects.filter(firm=firm)
 
-	context_dict['firm'] = firm
-	context_dict['reviews'] = reviews
+		context_dict['firm'] = firm
+		context_dict['reviews'] = reviews
+
+	# in case firm with the id does not exist
+	except Firm.DoesNotExist:
+		pass
+
 	return render(request, 'voxpop/reviews.html', context_dict)
 
+
+#testing - to be completed
 def newreview(request):
 	return render(request, 'voxpop/newreview.html')
 

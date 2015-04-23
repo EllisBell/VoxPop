@@ -1,0 +1,19 @@
+{% extends 'voxpop/base.html' %}
+
+{% load voxpop_extras %}
+
+{% block body_block %}
+	<div id="belowBar">
+		<p id="intro">Escritórios de advogados, avaliados por quem os conhece melhor.</p>
+		<div id="searchDiv">
+			<form>
+				<label></label>
+				<input class="search-query span10" type="text" value="" placeholder="procure um escritório..." id="search" autofocus />
+			</form>
+		</div>
+		<div id="content">
+			{% get_firms %}
+		</div>
+	</div>
+
+{% endblock %}

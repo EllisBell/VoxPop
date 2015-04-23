@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+<html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,9 +26,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+  <body>
+  	<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -35,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href='/voxpop/newhome'>#raio-x</a>
+          <a class="navbar-brand" href='/voxpop/'>#raio-x</a>
         </div>
 
         <!-- collect nav links and stuff for toggling -->
@@ -47,43 +49,15 @@
         </div>
       </div>
     </nav>
+  	
+  	{% block body_block %} {% endblock %}
 
-    <div class="container">
-      <div class="centered">
-        <div class="row buffer2">
-          <div class="col-lg-6 col-centered">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon search-addon"><span class="glyphicon glyphicon-search" id="searchicon" aria-hidden="true"></span></div>
-                  <input type="text" class="form-control input-lg" id="searchbox" placeholder="procure um escritório">
-                </div>
-              </div>
-          </div>
-        </div>
-        <div id="content">
-          {% for firmlist in firmlists %}
-          <div class="row buffer2">
-            {% for firm in firmlist %}
-              {% if forloop.parentloop.counter|add:forloop.counter0|divisibleby:"2" %}
-                  <div class="col-sm-4">
-                    <div class="firmBox evenBox" data-firmid="{{ firm.id }}"> {{ firm.name }} </div>
-                  </div>
-              {% else %}
-                <div class="col-sm-4"> 
-                  <div class="firmBox" data-firmid="{{ firm.id }}"> {{ firm.name }} </div>
-                </div>
-              {% endif %} 
-            {% endfor %}
-          </div>
-          {% endfor %}
-        </div>
-      </div> <!-- centered block -->
-    </div> <!-- content container -->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="{% static "js/new_vpajax.js" %}"></script>
+
   </body>
+
 </html>
