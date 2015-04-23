@@ -30,7 +30,7 @@ def firms(request):
 def get_firm_list(query=''):
 	firm_list = []
 	if query:
-		firm_list = Firm.objects.filter(name__icontains=query)
+		firm_list = Firm.objects.filter(name__icontains=query).extra(select={'lower_name':'lower(name)'}).order_by('lower_name')
 
 	return firm_list
 
