@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from voxpop.models import Firm, Review
+from voxpop.forms import ReviewForm
 import datetime
 
 # Create your views here.
@@ -103,6 +105,28 @@ def reviews(request, firm_id):
 
 
 #testing - to be completed
-def newreview(request):
-	return render(request, 'voxpop/newreview.html')
+##TODO - change layout/look of form
+#TODO - find out how to redisplay form with error messages
+def newreview(request, firm_id):
+	context_dict = {}
+
+	try:
+		firm = Firm.objects.get(id=firm_id)
+	except Firm.DoesNotExist:
+		firm = None
+
+	if request.method == 'POST':
+		form = ReviewForm(request.POST)
+		if form.is_valid():
+			if firm:
+				r = form.save(commit=False)
+				r.firm = firm
+				r.save()
+				return HttpResponseRedirect('/voxpop/') #change this to redirect to thank you page
+
+	form = ReviewForm()
+	context_dict['firm'] = firm
+	context_dict['form'] = form
+
+	return render(request, 'voxpop/newreview.html', context_dict)
 

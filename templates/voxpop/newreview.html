@@ -1,1 +1,39 @@
-hello world
+{% extends 'voxpop/newBase.html' %}
+
+{% block body_block %}
+
+<div class="container">
+	<div class="innerContainer">
+		
+		<div class="row buffer2">
+			{% if firm %}
+				<div class="col-sm-3">
+					<div class="sideArea"> 
+						<span id="sideName">{{ firm.name }}</span> <br> <br>
+						Está a escrever uma nova avaliação 
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<form id="review_form" method="post" action="/voxpop/newreview/{{ firm.id }}/">
+						{% csrf_token %}
+						{% for field in form.visible_fields %}
+							{{ field.errors }}
+							{{ field.help_text }}
+							{{ field }}
+							</br>
+						{% endfor %}
+
+						<input type="submit" name="submit" value="submeter avaliação" />
+					</form>
+				</div>
+			 {% else %}
+			   sorry
+			{% endif %}
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

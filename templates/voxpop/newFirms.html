@@ -1,15 +1,23 @@
-{% if too_many %}
-  <p>too many firms</p>
+{% if firm_list %}
+	{% if too_many %}
+	  <div class="col-sm-6 col-centered">
+	  	<p class="search-error">sorry, too many firms</p>
+	  </div>
+	{% else %}
+	 	{% for firm in firm_list %}
+			{% if forloop.counter|divisibleby:"2" %}
+				<div class="col-sm-4">
+	       			<div class="firmBox evenBox" data-firmid="{{ firm.id }}"> <a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
+	       		</div>
+	       	{% else %}
+				<div class="col-sm-4"> 
+	       	 		<div class="firmBox" data-firmid="{{ firm.id }}"><a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
+	      		</div>      
+	      	{% endif %}
+	    {% endfor %}
+	{% endif %}
 {% else %}
- 	{% for firm in firm_list %}
-		{% if forloop.counter|divisibleby:"2" %}
-			<div class="col-sm-4">
-       			<div class="firmBox evenBox" data-firmid="{{ firm.id }}"> <a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
-       		</div>
-       	{% else %}
-			<div class="col-sm-4"> 
-       	 		<div class="firmBox" data-firmid="{{ firm.id }}"><a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
-      		</div>      
-      	{% endif %}
-    {% endfor %}
+	<div class="col-sm-6 col-centered">
+		<p class="search-error">sorry, no firms found</p>
+	</div>
 {% endif %} 	
