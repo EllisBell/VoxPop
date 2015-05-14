@@ -1,11 +1,52 @@
-{% for firm in firm_list %}
-		{% if forloop.counter|divisibleby:"2" %}
-			<div class="col-sm-4">
-       			<div class="firmBox evenBox" data-firmid="{{ firm.id }}"> <a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
-       		</div>
-       	{% else %}
-			<div class="col-sm-4"> 
-       	 		<div class="firmBox" data-firmid="{{ firm.id }}"><a href="/voxpop/reviews/{{firm.id}}">{{ firm.name }}</a></div>
-      		</div>      
-      	{% endif %}
-{% endfor %}
+{% extends 'voxpop/newBase.html' %}
+
+{% block body_block %}
+
+<div class="container">
+	<div class="innerContainer">
+		{% if firm %}
+			{% if reviews %}
+				<div id="reviews">
+					<div class="row buffer2">
+			
+						<div class="col-sm-3">
+							<div class="sideArea"> 
+								<span id="sideName">{{ firm.name }}</span> <br> <br>
+								Escreva uma <a href="/voxpop/newreview/{{ firm.id }}">nova avaliação</a>
+								<span class="glyphicon glyphicon-pencil" id="writeicon" aria-hidden="true"></span> 
+							</div>
+		                </div>
+				        
+				        <!-- n.b. all reviews go in single column -->
+				        <div class="col-sm-6">
+				             {% for review in reviews %}
+				                <div class="review">
+				                	<p id="rev-date"> Avaliação submetida {{ review.dt|date:"d-m-Y" }} </p>
+				                	<p id="tagline"> {{ review.tagline }} </p>
+									<p> <span class="rev_header">Posição</span> <br>
+									{{ review.role }} </p>
+									<p> <span class="rev_header">Salário</span><br>
+									{{ review.salary }} </p>
+									<p> <span class="rev_header">O Bom</span> <br>
+									{{ review.pros }} </p>
+									<p> <span class="rev_header">O Mau</span> <br>
+									{{ review.cons }} </p>
+									<p> <span class="rev_header">Estágio</span> <br>
+									{{ review.estagio }} </p>
+								</div>
+							{% endfor %}
+						</div>	
+
+					</div>
+				</div>
+			{% else %}
+				Não há avaliações
+			{% endif %}
+		{% else %}
+			Esta sociedade não existe
+		{% endif %}
+	</div> <!-- inner container -->
+</div> <!--container>
+
+{% endblock %}
+

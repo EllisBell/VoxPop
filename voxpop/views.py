@@ -39,6 +39,7 @@ def firms(request):
 	return render(request, 'voxpop/newFirms.html', context_dict)
 
 # used for search - returns list of firms based on query
+#TODO - improve this... e.g. when people try "e" try "&" as well
 def get_firm_list(query=''):
 	firm_list = []
 	if query:
