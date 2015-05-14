@@ -7,4 +7,5 @@ urlpatterns = patterns('',
 	url(r'^firms/$', views.firms, name='firms'),
 	url(r'^reviews/(?P<firm_id>[0-9]+)/$', views.reviews, name='reviews'),
 	url(r'^newreview/$', views.newreview, name='newreview'),
+	url(r'^newFirms/$', views.firms, name='firms'),
 	)

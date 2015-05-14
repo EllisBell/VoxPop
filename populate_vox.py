@@ -8,8 +8,14 @@ from voxpop.models import Firm, Review
 
 import codecs
 
+####### Atencao #########
+# a adicionar - Linklaters, MLGTS, Pinto de Abreu, PMBGR, Raposo Subtil, Campos Ferreira, Teixeira de Freitas etc... (nao tao in lex)
+# ver tb legal500 etc.
+# e isto: http://www.asap.pt/associadas_lista.html
 
 def populate():
+	eg_tagline = "de longe o pior sitio onde ja trabalhei. a evitar."
+
 	eg_pro = """But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was 
 	born and I will give you a complete account of the system, and expound the actual teachings of the 
 	great explorer of the truth, the master-builder of human happiness."""
@@ -42,15 +48,16 @@ def populate():
 		firms.append(firm)
 
 	for i in range(0,5):
-		add_review(firms[i], eg_role, eg_salary, eg_pro, eg_con, eg_est)
+		add_review(firms[i], eg_tagline, 2, eg_role, eg_salary, eg_pro, eg_con, eg_est)
 
 
 def add_firm(name):
 	f = Firm.objects.get_or_create(name=name)[0]
 	return f
 
-def add_review(firm, role, salary, pros, cons, estagio):
-	r = Review.objects.create(firm=firm)
+def add_review(firm, tagline, rating, role, salary, pros, cons, estagio):
+	r = Review.objects.create(firm=firm, rating=rating)
+	r.tagline = tagline
 	r.role = role
 	r.salary = salary
 	r.pros = pros

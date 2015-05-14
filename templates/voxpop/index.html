@@ -6,19 +6,47 @@
 
     <div class="container"> <!--contains everything -->
       <div class="innerContainer">
-        <div class="row buffer2">
-          <div class="col-lg-6 col-centered">
+
+        <div class="row buffer3">
+          <div class="col-sm-8 col-centered">
+            <h1 id="introtext"> Sociedades de advogados, avaliadas por quem as conhece melhor </h1>
+          </div>
+        </div>
+
+        <div class="row buffer3">
+          <div class="col-sm-6 col-centered">
               <div class="form-group">
-                <div class="input-group">
+                <div class="input-group" id="search-group">
                   <div class="input-group-addon search-addon"><span class="glyphicon glyphicon-search" id="searchicon" aria-hidden="true"></span></div>
                   <input type="text" class="form-control input-lg" id="searchbox" placeholder="procure um escritório">
                 </div>
               </div>
           </div>
         </div>
-        <div id="content">
-          {% get_newfirms %}
+
+        <div class = "row buffer3">
+          <div id="search_results"></div>
         </div>
+
+        <div class="row buffer3">
+          <div class="col-sm-5">
+            <h3 id="latest_header"> Últimas Avaliações </h3>
+          </div>
+        </div>
+
+        <div class = "row buffer2">
+          <div id="latest">
+            {% for review in latest_reviews %}
+              <div class="col-sm-4">
+                <span class="latest_name"> {{ review.firm }} </span>
+                </br>
+                {{ review.tagline }} </br>
+                {{ review.rating }}/5 
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
       </div> <!-- innerContainer block -->
     </div> <!-- content container -->
 

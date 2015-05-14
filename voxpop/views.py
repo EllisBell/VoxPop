@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from voxpop.models import Firm, Review
+import datetime
 
 # Create your views here.
 
 
 def index(request):
-	return render(request, 'voxpop/index.html')
+	latest_revs = Review.objects.all().order_by('-dt')[:3]
+
+	return render(request, 'voxpop/index.html', {'latest_reviews': latest_revs})
 
 
 def firms(request):
@@ -20,11 +23,18 @@ def firms(request):
 	else:
 		firm_list = get_firm_list(query)
 
-	firmlists = get_split_list(firm_list)
+	#firmlists = get_split_list(firm_list)
 
-	context_dict['firmlists'] = firmlists
+	#context_dict['firmlists'] = firmlists
+	if len(firm_list) > 3:
+		context_dict['too_many'] = True
 
-	return render(request, 'voxpop/firms.html', context_dict)
+	context_dict['firm_list'] = firm_list
+
+
+	print "got here"
+
+	return render(request, 'voxpop/newFirms.html', context_dict)
 
 # used for search - returns list of firms based on query
 def get_firm_list(query=''):

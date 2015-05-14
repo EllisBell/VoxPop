@@ -8,8 +8,8 @@ $(document).ready(function() {
 			event.preventDefault();
 			var query;
 			query = $(this).val();
-			$.get('/voxpop/firms/', {query: query}, function(data) {
-				$('#content').html(data);
+			$.get('/voxpop/newFirms/', {query: query}, function(data) {
+				$('#search_results').html(data);
 			});
 		}
 	});

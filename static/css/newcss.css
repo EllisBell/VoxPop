@@ -1,9 +1,10 @@
 body {
 	padding-top: 60px;
+	background-color: #f5f5f5;
 }
 
 .navbar {
-	background-color: #e13f70;
+	background-color: #e74c3c;
 	border:none;
 }
 
@@ -30,13 +31,33 @@ body {
 	margin: 0 auto;
 }
 
+.buffer3 {
+	margin-top: 3%;
+}
+
+.buffer2 {
+	margin-top: 2%
+}
+
+#introtext {
+	text-align: center;
+}
+
+#aval {
+	color: #0e8b42;
+}
+
+#search-group {
+	border-bottom: 2px solid black;
+}
+
 #searchbox {
+	background-color: #f5f5f5;
 	height:60px;
 	font-size: 40px;
 	padding-left: 0px;
 	box-shadow: none;
 	border:none;
-	background-color: #E7EAF2;
 	border-radius: 0;
 	font-family: 'Merriweather', serif;
 }
@@ -47,15 +68,6 @@ body {
 	border:none;
 }
 
-#searchicon {
-	font-size: 1.8em;
-	position:relative;
-	top:3px;
-}
-
-.buffer2 {
-	margin-top: 3%;
-}
 
 @media screen and (max-width: 568px) {
 	#searchbox {
@@ -63,19 +75,32 @@ body {
 	}
 }
 
+#searchicon {
+	font-size: 1.8em;
+	position:relative;
+	top:3px;
+}
+
 .search-addon {
-	background-color: #E7EAF2;
+	background-color: #f5f5f5;
 	border:none;
 	border-radius: 0;
+}
+
+.latest_name {
+	font-weight: bold;
+	display: inline-block;
+	height: 70px;
 }
 
 .firmBox {
 	margin-left:10px;
 	margin-right:10px;
-	height:280px;
-	background-color: #040E1A;
+	padding:4px;
+	height:210px;
+	background-color: #2c3e50;
 	color:white;
-	font-size: 2.2em;
+	font-size: 1.4em;
 	text-align: left;
 	font-family: 'Merriweather', serif;
 }
@@ -86,10 +111,11 @@ body {
 
 .firmBox a:hover {
 	text-decoration: none;
+	color: #c0392b;
 }
 
 .evenBox {
-	background-color: gray;
+	background-color: #7f8c8d;
 }
 
 .review {

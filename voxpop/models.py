@@ -10,11 +10,14 @@ class Firm(models.Model):
 class Review(models.Model):
 	#rev_id = models.IntgerField() //should we have this?
 	firm = models.ForeignKey(Firm)
+	tagline = models.CharField(max_length=128)
+	rating = models.IntegerField()
 	role = models.CharField(max_length=128)
 	salary = models.IntegerField(null=True)
 	pros = models.CharField(max_length=300) # test/change this
 	cons = models.CharField(max_length=300)
 	estagio = models.CharField(max_length=300)
+	dt = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):
 		return "review " + str(self.id)
