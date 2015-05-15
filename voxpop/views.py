@@ -32,6 +32,7 @@ def firms(request):
 		context_dict['too_many'] = True
 
 	context_dict['firm_list'] = firm_list
+	context_dict['query'] = query
 
 
 	print "got here"

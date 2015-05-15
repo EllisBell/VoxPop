@@ -1,7 +1,7 @@
 {% if firm_list %}
 	{% if too_many %}
 	  <div class="col-sm-6 col-centered">
-	  	<p class="search-error">sorry, too many firms</p>
+	  	<p class="search-error">experimente uma pesquisa mais específica</p>
 	  </div>
 	{% else %}
 	 	{% for firm in firm_list %}
@@ -18,6 +18,6 @@
 	{% endif %}
 {% else %}
 	<div class="col-sm-6 col-centered">
-		<p class="search-error">sorry, no firms found</p>
+		<p class="search-error">não temos nenhum escritório com {{query}} no nome</p>
 	</div>
 {% endif %} 	
