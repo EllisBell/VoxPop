@@ -101,13 +101,14 @@ body {
 }
 
 #latest {
+	display: inline-block;
 
 }
 
 .latest_name {
 	font-weight: bold;
 	display: inline-block;
-	height: 70px;
+	height: 60px;
 }
 
 
@@ -159,7 +160,7 @@ body {
 	font-weight: bold;
 }
 
-#tagline {
+.tagline {
 	font-style: italic;
 }
 
@@ -195,5 +196,26 @@ body {
 .rev-big {
 
 }
+
+.form-error {
+	background-color: #e74c3c;
+	color: white;
+}
+
+
+.v-center {
+  min-height: 60%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.big-text {
+	font-size: 400%;
+	color: #e74c3c;
+	font-family: 'Lobster', cursive;
+	text-align: center;
+}
+
 
 /* #DEE9F0 */

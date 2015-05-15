@@ -123,7 +123,7 @@ def newreview(request, firm_id):
 				r = form.save(commit=False)
 				r.firm = firm
 				r.save()
-				return HttpResponseRedirect('/voxpop/') #change this to redirect to thank you page
+				return HttpResponseRedirect('/voxpop/newreview/thanks') #change this to redirect to thank you page
 	else:
 		form = ReviewForm()
 	
@@ -131,4 +131,9 @@ def newreview(request, firm_id):
 	context_dict['form'] = form
 
 	return render(request, 'voxpop/newreview.html', context_dict)
+
+
+def thanks(request):
+
+	return render(request, 'voxpop/thanks.html')
 

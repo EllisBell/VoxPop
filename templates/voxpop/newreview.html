@@ -22,7 +22,7 @@
 							<div class = "newrev-section">
 								{% if field.errors %}
 									{% for error in field.errors %}
-										{{ error }} <br/>
+										<span class="form-error">{{ error }}</span> <br/>
 									{% endfor %}
 								{% endif %}
 
