@@ -23,7 +23,7 @@ body {
 }
 
 .nav.navbar-nav.navbar-right li a:hover {
-	color:black;
+	color: #333333;
 }
 
 .innerContainer {
@@ -167,3 +167,33 @@ body {
 	font-weight: bold;
 	color: #e74c3c;
 }
+
+.newrev-section {
+	margin-bottom: 20px;
+}
+
+#review-form {
+	font-family: 'Merriweather', serif;
+}
+
+.help-text {
+	font-weight: bold;
+}
+
+.rev-box {
+	border:none;
+	background-color: #E6EDF0;
+	padding:4px;
+}
+
+.rev-box:focus {
+	outline: none;
+	box-shadow: none;
+	border:none;
+}
+
+.rev-big {
+
+}
+
+/* #DEE9F0 */

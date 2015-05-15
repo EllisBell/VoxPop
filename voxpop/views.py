@@ -124,8 +124,9 @@ def newreview(request, firm_id):
 				r.firm = firm
 				r.save()
 				return HttpResponseRedirect('/voxpop/') #change this to redirect to thank you page
-
-	form = ReviewForm()
+	else:
+		form = ReviewForm()
+	
 	context_dict['firm'] = firm
 	context_dict['form'] = form
 

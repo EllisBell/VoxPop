@@ -13,14 +13,23 @@
 						Está a escrever uma nova avaliação 
 					</div>
 				</div>
+				
 				<div class="col-sm-6">
-					<form id="review_form" method="post" action="/voxpop/newreview/{{ firm.id }}/">
+					<form id="review-form" method="post" action="/voxpop/newreview/{{ firm.id }}/">
 						{% csrf_token %}
 						{% for field in form.visible_fields %}
-							{{ field.errors }}
-							{{ field.help_text }}
-							{{ field }}
-							</br>
+							
+							<div class = "newrev-section">
+								{% if field.errors %}
+									{% for error in field.errors %}
+										{{ error }} <br/>
+									{% endfor %}
+								{% endif %}
+
+								<span class="help-text">{{ field.help_text }}</span><br/>
+
+								{{ field }} </br>
+							</div>
 						{% endfor %}
 
 						<input type="submit" name="submit" value="submeter avaliação" />

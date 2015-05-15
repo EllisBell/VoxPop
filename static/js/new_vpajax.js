@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-	
+	//TODO include new review text area character countdown (in separate JS file?)
+
 	//search...
 	$('#searchbox').keydown(function(event) {
 	//var code = event.
