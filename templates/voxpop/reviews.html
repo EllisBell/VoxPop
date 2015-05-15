@@ -5,19 +5,19 @@
 <div class="container">
 	<div class="innerContainer">
 		{% if firm %}
-			{% if reviews %}
-				<div id="reviews">
-					<div class="row buffer2">
 			
-						<div class="col-sm-3">
-							<div class="sideArea"> 
-								<span id="sideName">{{ firm.name }}</span> <br> <br>
-								Escreva uma <a href="/voxpop/newreview/{{ firm.id }}">nova avaliação</a>
-								<span class="glyphicon glyphicon-pencil" id="writeicon" aria-hidden="true"></span> 
-							</div>
-		                </div>
-				        
-				        <!-- n.b. all reviews go in single column -->
+			<div class="row buffer2">
+				<div class="col-sm-3">
+					<div class="sideArea"> 
+						<span id="sideName">{{ firm.name }}</span> <br> <br>
+						Escreva uma <a href="/voxpop/newreview/{{ firm.id }}">nova avaliação</a>
+						<span class="glyphicon glyphicon-pencil" id="writeicon" aria-hidden="true"></span> 
+					</div>
+	            </div>			
+
+				{% if reviews %}
+					<div id="reviews">
+				        <!-- n.b. all reviews go in single column/row -->
 				        <div class="col-sm-6">
 				             {% for review in reviews %}
 				                <div class="review">
@@ -37,15 +37,18 @@
 								</div>
 							{% endfor %}
 						</div>	
-
 					</div>
-				</div>
-			{% else %}
-				Não há avaliações
-			{% endif %}
+				
+				{% else %}
+					Esta sociedade ainda não foi avaliada
+				{% endif %}
+			
+			</div> <!--close row-->
+
 		{% else %}
 			Esta sociedade não existe
 		{% endif %}
+	
 	</div> <!-- inner container -->
 </div> <!--container>
 

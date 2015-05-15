@@ -105,10 +105,15 @@ body {
 
 }
 
-.latest_name {
+.latest-name {
 	font-weight: bold;
 	display: inline-block;
 	height: 60px;
+	color:#333333;
+}
+
+#latest a:hover {
+	text-decoration: none
 }
 
 
@@ -194,7 +199,12 @@ body {
 }
 
 .rev-big {
+/* maybe change box sizes*/
+}
 
+#rev-button {
+	background-color: #C6E2F1;
+	border:none;
 }
 
 .form-error {

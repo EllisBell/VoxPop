@@ -24,10 +24,10 @@ $(document).ready(function() {
 		$("body").scrollTop(0);
 	});*/
 
-	$("body").on('click', '#nova', function(event) {
+/*	$("body").on('click', '#nova', function(event) {
 		$.get('/voxpop/newreview', function(data) {
 			$('#content').html(data);
 		});
 	});
-
+*/
 });

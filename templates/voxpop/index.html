@@ -9,7 +9,7 @@
 
         <div class="row buffer2">
           <div class="col-sm-8 col-centered">
-            <h1 id="introtext"> Do you know what time I got up today, got up today, got up today? </h1>
+            <h1 id="introtext">Sociedades de advogados, avaliadas por quem as conhece melhor</h1>
           </div>
         </div>
 
@@ -42,10 +42,10 @@
           <div id="latest">
             {% for review in latest_reviews %}
               <div class="col-sm-4">
-                <span class="latest_name"> {{ review.firm }} </span>
+                <a href="/voxpop/reviews/{{review.firm.id}}" class="latest-name"> {{ review.firm }} </a>
                 </br>
-                <span class="tagline">{{ review.tagline }}</span> </br>
-                {{ review.rating }}/5 
+                <span class="rating">{{ review.rating }}</span> / 5 </br>
+                <span class="tagline">{{ review.tagline }}</span>
               </div>
             {% endfor %}
           </div>
