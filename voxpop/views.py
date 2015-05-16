@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from voxpop.models import Firm, Review
 from voxpop.forms import ReviewForm
 import datetime
+import operator
 
 # Create your views here.
 
@@ -40,15 +42,20 @@ def firms(request):
 	return render(request, 'voxpop/newFirms.html', context_dict)
 
 # used for search - returns list of firms based on query
-#TODO - improve this... e.g. when people try "e" try "&" as well
+#TODO - improve this... e.g. potentially when people try "e" try "&" as well?
+# split query string into individual words then check if firm name has all of the words
+# to avoid checking for exact phrases - e.g. "vieira almeida" will get a match, no need for the "de"
+# a bit of black magic using reduce, operator and Q
 def get_firm_list(query=''):
 	firm_list = []
 	if query:
-		firm_list = Firm.objects.filter(name__icontains=query).extra(select={'lower_name':'lower(name)'}).order_by('lower_name')
+		word_list = query.split()
+		firm_list = Firm.objects.filter(reduce(operator.and_, (Q(name__contains=word) for word in word_list)))
+		#this is the same (I think) as filter(name contains word) & filter(name contains word) & filter(name contains word)
 
 	return firm_list
 
-
+# ATTENTION as it stands this is a uselss relic
 # takes list and splits it up into list of lists, each containing 3 items
 def get_split_list(firmlist):
 	
@@ -106,9 +113,7 @@ def reviews(request, firm_id):
 	return render(request, 'voxpop/reviews.html', context_dict)
 
 
-#testing - to be completed
-##TODO - change layout/look of form
-#TODO - find out how to redisplay form with error messages
+# deals with new review page / form
 def newreview(request, firm_id):
 	context_dict = {}
 
@@ -133,8 +138,7 @@ def newreview(request, firm_id):
 
 	return render(request, 'voxpop/newreview.html', context_dict)
 
-
+# thank you page for new reviews
 def thanks(request):
-
 	return render(request, 'voxpop/thanks.html')
 
