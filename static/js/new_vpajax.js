@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	//TODO include new review text area character countdown (in separate JS file?)
+	//TODO stop form being submitted on enter button
 
 	//search...
 	$('#searchbox').keydown(function(event) {
