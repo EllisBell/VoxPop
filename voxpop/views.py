@@ -105,12 +105,23 @@ def reviews(request, firm_id):
 
 		context_dict['firm'] = firm
 		context_dict['reviews'] = reviews
+		context_dict['average'] = get_average(reviews)
 
 	# in case firm with the id does not exist
 	except Firm.DoesNotExist:
 		pass
 
 	return render(request, 'voxpop/reviews.html', context_dict)
+
+def get_average(reviews):
+	total = 0
+
+	for review in reviews:
+		total += review.rating
+
+	average = float(total) / len(reviews)
+	avg_two_dec_places = "%.2f" % average
+	return avg_two_dec_places
 
 
 # deals with new review page / form
