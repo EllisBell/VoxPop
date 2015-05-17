@@ -115,11 +115,15 @@ def reviews(request, firm_id):
 
 def get_average(reviews):
 	total = 0
+	num_rev = len(reviews)
+
+	if num_rev == 0:
+		return "n/a"
 
 	for review in reviews:
 		total += review.rating
 
-	average = float(total) / len(reviews)
+	average = float(total) / num_rev
 	avg_two_dec_places = "%.2f" % average
 	return avg_two_dec_places
 
